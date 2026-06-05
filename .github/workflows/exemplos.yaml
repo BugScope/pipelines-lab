@@ -21,9 +21,9 @@ jobs:
       - name: Exibir informações do sistema
         run: |
           echo "Sistema operacional: ${{ runner.os }}"
-          echo "Diretorio Atual: ${{pwd}}"
-          echo "Data Atual: ${{date}}"
-          echo "Usuario: ${{whoami}}"
+          echo "Diretorio Atual: $(pwd)"
+          echo "Data Atual: $(date)"
+          echo "Usuario: $(whoami)"
       
       - name: Listar arquivos do repositório
         run: ls -la
