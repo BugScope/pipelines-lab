@@ -26,7 +26,7 @@ jobs:
           echo "Usuario: ${{whoami}}"
       
       - name: Listar arquivos do repositório
-          run: ls -la
+        run: ls -la
       
       - name: Comandos multiplos
         run: |
