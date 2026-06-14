@@ -1,0 +1,31 @@
+on:
+  schedule:
+    # Executa todo dia as 21:55 (UTC + 3)
+    - cron: '55 00 * * *'
+  workflow_dispatch:
+
+jobs:
+  echeduled-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout codigo
+      uses: actions/checkout@v4
+
+    - name: Informaçoes do Schedule
+      run: |
+        echo "Workflow executado por agendamento"
+        echo "Data e hora atual: $(date)"
+        echo "Hora UTC: $(date -u)"
+        echo "Timezone do runner: $(date +%Z)"
+    
+    - name: Relatorio diario automatico
+      run: |
+        echo "RELATORIO DIARIO - $(date)"
+        echo "=============================="
+        echo "Total de commits hoje: $(git rev-list --count --since=midnight HEAD)"
+        echo "Contribuidores ativos hoje: $(git shortlog -s -n --since=midnight HEAD | wc -l)"
+        echo "Ultimo commit: $(git log -1 --format='%h - %s (%an)') "
+
+      
+      
